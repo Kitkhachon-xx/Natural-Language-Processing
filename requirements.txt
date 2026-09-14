@@ -1,0 +1,4 @@
+nltk==3.10.3
+spacy==3.8.16
+pythainlp==5.3.4
+PyYAML==6.0.3
