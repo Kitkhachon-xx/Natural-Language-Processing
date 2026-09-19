@@ -1,6 +1,6 @@
 # Natural Language Processing
 
-โปรเจกต์ตัวอย่างสำหรับเรียนรู้และเปรียบเทียบการประมวลผลภาษาธรรมชาติ (NLP) ด้วย 3 ไลบรารีหลัก ได้แก่ **NLTK**, **spaCy** (สำหรับภาษาอังกฤษ) และ **PyThaiNLP** (สำหรับภาษาไทย) ในที่เดียว
+โปรเจกต์สำหรับเรียนรู้และเปรียบเทียบการประมวลผลภาษาธรรมชาติ (NLP) ด้วย 3 ไลบรารีหลัก ได้แก่ **NLTK**, **spaCy** (สำหรับภาษาอังกฤษ) และ **PyThaiNLP** (สำหรับภาษาไทย) ในที่เดียว พร้อมบันทึกบทเรียนเชิงทฤษฎี (เช่น HMM/Viterbi) ประกอบ
 
 ## เหมาะกับใคร
 
@@ -14,31 +14,46 @@
 
 | โมดูล | ไลบรารี | งานที่ทำ |
 | --- | --- | --- |
-| `Process/Nltk_Process.py` | NLTK | Tokenize, Sentence Tokenize, POS Tagging, Named Entity Chunking, Stopwords (EN) |
-| `Process/Spacy_Process.py` | spaCy (`en_core_web_sm`) | Tokenize, POS Tagging, Dependency Parsing |
-| `Process/Py_Thai_NLP.py` | PyThaiNLP | ตัดคำภาษาไทย (multi-engine), POS Tagging, Stopwords (TH) |
-| `Util/load_utils.py` | PyYAML | โหลดค่าตั้งต้นจาก `config.yaml` |
+| `Code-Station/Process/Nltk_Process.py` | NLTK | Tokenize, Sentence Tokenize, POS Tagging, Named Entity Chunking, Stopwords (EN) |
+| `Code-Station/Process/Spacy_Process.py` | spaCy (`en_core_web_sm`) | Tokenize, POS Tagging, Dependency Parsing |
+| `Code-Station/Process/Py_Thai_NLP.py` | PyThaiNLP | ตัดคำภาษาไทย (multi-engine), POS Tagging, Stopwords (TH) |
+| `Code-Station/Util/load_utils.py` | PyYAML | โหลดค่าตั้งต้นจาก `config.yaml` |
 
 ## โครงสร้างโปรเจกต์
 
+โปรเจกต์แบ่งเป็น 2 ส่วนหลัก คือ `Code-Station/` (โค้ดตัวอย่างที่รันได้) และ `Lecture/` (บันทึกบทเรียนเชิงทฤษฎี)
+
 ```text
 Natural-Language-Processing/
-├── main.py                 # จุดเริ่มรันโปรแกรม เรียกใช้ทั้ง 3 โปรเซสเซอร์
-├── config.yaml              # ข้อความตัวอย่างภาษาอังกฤษ/ไทยที่ใช้ประมวลผล
-├── requirements.txt          # รายการไลบรารีที่ต้องติดตั้ง
-├── Process/
-│   ├── Nltk_Process.py       # NLTK wrapper
-│   ├── Spacy_Process.py      # spaCy wrapper
-│   └── Py_Thai_NLP.py        # PyThaiNLP wrapper
-└── Util/
-    └── load_utils.py         # ฟังก์ชันโหลด config.yaml
+├── README.md
+├── Code-Station/            # โค้ดตัวอย่างที่รันได้ (ทุกคำสั่งด้านล่างให้รันจากโฟลเดอร์นี้)
+│   ├── main.py               # จุดเริ่มรันโปรแกรม เรียกใช้ทั้ง 3 โปรเซสเซอร์
+│   ├── config.yaml           # ข้อความตัวอย่างภาษาอังกฤษ/ไทยที่ใช้ประมวลผล
+│   ├── requirements.txt      # รายการไลบรารีที่ต้องติดตั้ง
+│   ├── Process/
+│   │   ├── Nltk_Process.py   # NLTK wrapper
+│   │   ├── Spacy_Process.py  # spaCy wrapper
+│   │   └── Py_Thai_NLP.py    # PyThaiNLP wrapper
+│   └── Util/
+│       └── load_utils.py     # ฟังก์ชันโหลด config.yaml
+└── Lecture/                 # บันทึกบทเรียน (Markdown แบบ Obsidian)
+    └── HMM.md                # การคำนวณ HMM + Viterbi สำหรับ POS Tagging
 ```
+
+## Lecture
+
+| ไฟล์ | หัวข้อ |
+| --- | --- |
+| [`Lecture/HMM.md`](Lecture/HMM.md) | ตัวอย่างการคำนวณ **Hidden Markov Model (HMM)** ร่วมกับ **Viterbi Algorithm** แบบ Step-by-Step สำหรับ POS Tagging ของประโยค *"I am a Demon who destroy world"* ครอบคลุมตาราง Transition/Emission, การคำนวณทีละคำ, จุดที่คำมีได้หลาย Tag (`destroy`, `world`) และการ Backtracking เลือกเส้นทางที่ดีที่สุด |
+
+> ไฟล์ในโฟลเดอร์นี้เขียนด้วยรูปแบบของ Obsidian (callout, สูตร LaTeX) จึงแสดงผลได้สมบูรณ์ที่สุดเมื่อเปิดด้วย Obsidian หรือโปรแกรมที่รองรับ LaTeX
 
 ## การติดตั้ง
 
-1. สร้างและเปิดใช้งาน virtual environment (แนะนำ conda หรือ venv)
+1. เข้าไปที่โฟลเดอร์โค้ด แล้วสร้างและเปิดใช้งาน virtual environment (แนะนำ conda หรือ venv)
 
    ```bash
+   cd Code-Station
    conda create -n text_cls python=3.11
    conda activate text_cls
    ```
@@ -59,7 +74,7 @@ Natural-Language-Processing/
 
 ## การตั้งค่า (`config.yaml`)
 
-กำหนดข้อความที่จะนำไปประมวลผลได้ที่ `config.yaml`:
+กำหนดข้อความที่จะนำไปประมวลผลได้ที่ `Code-Station/config.yaml`:
 
 ```yaml
 text : "This is a sample text for NLP processing. It contains multiple sentences."
@@ -70,6 +85,8 @@ th_text : "นักเรียนชาติจีนเรียนภาษ
 - `th_text` — ข้อความภาษาไทย ใช้กับ PyThaiNLP
 
 ## วิธีใช้งาน
+
+รันจากโฟลเดอร์ `Code-Station/` (เพราะ `main.py` อ่าน `config.yaml` จาก working directory)
 
 ```bash
 python main.py
