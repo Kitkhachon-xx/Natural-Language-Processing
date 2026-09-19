@@ -1,6 +1,6 @@
 # Natural Language Processing
 
-โปรเจกต์สำหรับเรียนรู้และเปรียบเทียบการประมวลผลภาษาธรรมชาติ (NLP) ด้วย 3 ไลบรารีหลัก ได้แก่ **NLTK**, **spaCy** (สำหรับภาษาอังกฤษ) และ **PyThaiNLP** (สำหรับภาษาไทย) ในที่เดียว พร้อมบันทึกบทเรียนเชิงทฤษฎี (เช่น HMM/Viterbi) ประกอบ
+โปรเจกต์สำหรับเรียนรู้และเปรียบเทียบการประมวลผลภาษาธรรมชาติ (NLP) ด้วย 3 ไลบรารีหลัก ได้แก่ **NLTK**, **spaCy** (สำหรับภาษาอังกฤษ) และ **PyThaiNLP** (สำหรับภาษาไทย) ในที่เดียว พร้อมบันทึกบทเรียนเชิงทฤษฎี (เช่น HMM/Viterbi) และสมุดแล็บ Jupyter (Lab) ประกอบ
 
 ## เหมาะกับใคร
 
@@ -14,30 +14,36 @@
 
 | โมดูล | ไลบรารี | งานที่ทำ |
 | --- | --- | --- |
-| `Code-Station/Process/Nltk_Process.py` | NLTK | Tokenize, Sentence Tokenize, POS Tagging, Named Entity Chunking, Stopwords (EN) |
-| `Code-Station/Process/Spacy_Process.py` | spaCy (`en_core_web_sm`) | Tokenize, POS Tagging, Dependency Parsing |
-| `Code-Station/Process/Py_Thai_NLP.py` | PyThaiNLP | ตัดคำภาษาไทย (multi-engine), POS Tagging, Stopwords (TH) |
-| `Code-Station/Util/load_utils.py` | PyYAML | โหลดค่าตั้งต้นจาก `config.yaml` |
+| `Code-Station/ฺBasic-Tokenize/Process/Nltk_Process.py` | NLTK | Tokenize, Sentence Tokenize, POS Tagging, Named Entity Chunking, Stopwords (EN) |
+| `Code-Station/ฺBasic-Tokenize/Process/Spacy_Process.py` | spaCy (`en_core_web_sm`) | Tokenize, POS Tagging, Dependency Parsing |
+| `Code-Station/ฺBasic-Tokenize/Process/Py_Thai_NLP.py` | PyThaiNLP | ตัดคำภาษาไทย (multi-engine), POS Tagging, Stopwords (TH) |
+| `Code-Station/ฺBasic-Tokenize/Util/load_utils.py` | PyYAML | โหลดค่าตั้งต้นจาก `config.yaml` |
 
 ## โครงสร้างโปรเจกต์
 
-โปรเจกต์แบ่งเป็น 2 ส่วนหลัก คือ `Code-Station/` (โค้ดตัวอย่างที่รันได้) และ `Lecture/` (บันทึกบทเรียนเชิงทฤษฎี)
+โปรเจกต์แบ่งเป็น 3 ส่วนหลัก คือ `Code-Station/` (โค้ดตัวอย่างที่รันได้ แยกเป็นหัวข้อ), `Lecture/` (บันทึกบทเรียนเชิงทฤษฎี) และ `Lab/` (สมุดแล็บ Jupyter Notebook)
 
 ```text
 Natural-Language-Processing/
 ├── README.md
-├── Code-Station/            # โค้ดตัวอย่างที่รันได้ (ทุกคำสั่งด้านล่างให้รันจากโฟลเดอร์นี้)
-│   ├── main.py               # จุดเริ่มรันโปรแกรม เรียกใช้ทั้ง 3 โปรเซสเซอร์
-│   ├── config.yaml           # ข้อความตัวอย่างภาษาอังกฤษ/ไทยที่ใช้ประมวลผล
-│   ├── requirements.txt      # รายการไลบรารีที่ต้องติดตั้ง
-│   ├── Process/
-│   │   ├── Nltk_Process.py   # NLTK wrapper
-│   │   ├── Spacy_Process.py  # spaCy wrapper
-│   │   └── Py_Thai_NLP.py    # PyThaiNLP wrapper
-│   └── Util/
-│       └── load_utils.py     # ฟังก์ชันโหลด config.yaml
-└── Lecture/                 # บันทึกบทเรียน (Markdown แบบ Obsidian)
-    └── HMM.md                # การคำนวณ HMM + Viterbi สำหรับ POS Tagging
+├── Code-Station/            # โค้ดตัวอย่างที่รันได้ แยกโฟลเดอร์ตามหัวข้อ
+│   ├── ฺBasic-Tokenize/    # หัวข้อ: Tokenization / POS / NER / Dependency (NLTK, spaCy, PyThaiNLP)
+│   │   ├── main.py           # จุดเริ่มรันโปรแกรม เรียกใช้ทั้ง 3 โปรเซสเซอร์
+│   │   ├── config.yaml       # ข้อความตัวอย่างภาษาอังกฤษ/ไทยที่ใช้ประมวลผล
+│   │   ├── requirements.txt  # รายการไลบรารีที่ต้องติดตั้ง
+│   │   ├── Process/
+│   │   │   ├── Nltk_Process.py   # NLTK wrapper
+│   │   │   ├── Spacy_Process.py  # spaCy wrapper
+│   │   │   └── Py_Thai_NLP.py    # PyThaiNLP wrapper
+│   │   └── Util/
+│   │       └── load_utils.py     # ฟังก์ชันโหลด config.yaml
+│   ├── HMM/                  # (เตรียมไว้) โค้ดตัวอย่าง HMM
+│   └── CRF/                  # (เตรียมไว้) โค้ดตัวอย่าง CRF
+├── Lecture/                 # บันทึกบทเรียน (Markdown แบบ Obsidian)
+│   └── HMM.md                # การคำนวณ HMM + Viterbi สำหรับ POS Tagging
+└── Lab/                     # สมุดแล็บ Jupyter Notebook
+    ├── 01Intro.ipynb         # Lab 01: แนะนำ NLP และการใช้ NLTK / spaCy / PyThaiNLP
+    └── 02nlp_lab.ipynb       # Lab 02: BPE, Word Segmentation, POS Tagging, Sequence Labeling
 ```
 
 ## Lecture
@@ -48,12 +54,21 @@ Natural-Language-Processing/
 
 > ไฟล์ในโฟลเดอร์นี้เขียนด้วยรูปแบบของ Obsidian (callout, สูตร LaTeX) จึงแสดงผลได้สมบูรณ์ที่สุดเมื่อเปิดด้วย Obsidian หรือโปรแกรมที่รองรับ LaTeX
 
+## Lab
+
+| Notebook | เนื้อหา |
+| --- | --- |
+| [`Lab/01Intro.ipynb`](Lab/01Intro.ipynb) | Lab 01: แนะนำ NLP, ตั้งค่าไลบรารี, ตัวอย่าง NLTK / spaCy (อังกฤษ) และ PyThaiNLP (ไทย), ปัญหาความกำกวมของการตัดคำไทยด้วยหลาย engine, งานประยุกต์ของ NLP และแบบฝึกหัด DIY พร้อมเฉลย |
+| [`Lab/02nlp_lab.ipynb`](Lab/02nlp_lab.ipynb) | Lab 02: **Byte Pair Encoding (BPE)** ทีละขั้น (นับคู่, merge, training loop, encode/decode), การตัดคำไทย, Word Segmentation (MaxMatch), POS Tagging และ Sequence Labeling |
+
+เปิดด้วย Jupyter หรือ VS Code (`pip install jupyter` หากยังไม่มี) ส่วนไลบรารีเสริมของ Lab 02 (`matplotlib`, `tokenizers`, `pythainlp`) เป็นตัวเลือก
+
 ## การติดตั้ง
 
-1. เข้าไปที่โฟลเดอร์โค้ด แล้วสร้างและเปิดใช้งาน virtual environment (แนะนำ conda หรือ venv)
+1. เข้าไปที่โฟลเดอร์หัวข้อที่ต้องการรัน (ตัวอย่างนี้คือ Tokenization) แล้วสร้างและเปิดใช้งาน virtual environment (แนะนำ conda หรือ venv)
 
    ```bash
-   cd Code-Station
+   cd Code-Station/ฺBasic-Tokenize
    conda create -n text_cls python=3.11
    conda activate text_cls
    ```
@@ -74,7 +89,7 @@ Natural-Language-Processing/
 
 ## การตั้งค่า (`config.yaml`)
 
-กำหนดข้อความที่จะนำไปประมวลผลได้ที่ `Code-Station/config.yaml`:
+กำหนดข้อความที่จะนำไปประมวลผลได้ที่ `Code-Station/ฺBasic-Tokenize/config.yaml`:
 
 ```yaml
 text : "This is a sample text for NLP processing. It contains multiple sentences."
@@ -86,7 +101,7 @@ th_text : "นักเรียนชาติจีนเรียนภาษ
 
 ## วิธีใช้งาน
 
-รันจากโฟลเดอร์ `Code-Station/` (เพราะ `main.py` อ่าน `config.yaml` จาก working directory)
+รันจากโฟลเดอร์ `Code-Station/ฺBasic-Tokenize/` (เพราะ `main.py` อ่าน `config.yaml` จาก working directory)
 
 ```bash
 python main.py
